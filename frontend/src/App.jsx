@@ -1,9 +1,9 @@
-
+import Home from "./Pages/Home"
 
 const App = () => {
   return (
     <>
-    hello 
+    <Home/>
     </>
   )
 }
