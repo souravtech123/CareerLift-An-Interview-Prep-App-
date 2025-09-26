@@ -1,26 +1,48 @@
-import React from 'react'
-import Logo from '../assets/Frontier Physicians (2).png'
+import React from 'react';
+import Logo from '../assets/Frontier Physicians (2).png';
 
 const Navbar = () => {
   return (
-    <nav className='flex gap-10 justify-around'>
-        <div>
-            <img className='w-30 h-30 rounded-4xl p-2' src={Logo} alt="" />
-        </div>
-        <div className=''>
-            <ul className='flex gap-8 text-xl font-serif p-10  text-blue-950'>
-                <li>Explore</li>
-                <li>Library</li>
-                <li>Practice</li>
-                <li>Dasboard</li>
-            </ul>
-        </div>
-        <div className='text-xl  gap-2 p-8'>
-            <button className='border-2 rounded-xl w-25 h-8 bg-black text-white m-2'>Login</button>
-            <button>SignUp</button>
-        </div>
-    </nav>
-  )
-}
+    <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
+      <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
 
-export default Navbar
+        {/* Logo */}
+        <div className="flex items-center">
+          <img className="w-32 h-auto rounded-xl" src={Logo} alt="Logo" />
+        </div>
+
+        {/* Menu Items */}
+        <ul className="hidden md:flex gap-8 text-lg font-medium text-blue-950">
+          <li className="hover:text-blue-600 cursor-pointer">Explore</li>
+          <li className="hover:text-blue-600 cursor-pointer">Library</li>
+          <li className="hover:text-blue-600 cursor-pointer">Practice</li>
+          <li className="hover:text-blue-600 cursor-pointer">Dashboard</li>
+        </ul>
+
+        {/* Buttons */}
+        <div className="hidden md:flex gap-4">
+          <button className="border-2 border-black rounded-xl px-4 py-1 bg-black text-white hover:bg-gray-800 transition">
+            Login
+          </button>
+          <button className="border-2 border-blue-600 rounded-xl px-4 py-1 text-blue-600 hover:bg-blue-50 transition">
+            Sign Up
+          </button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button className="text-blue-950 focus:outline-none">
+            {/* Hamburger icon */}
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" 
+                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
