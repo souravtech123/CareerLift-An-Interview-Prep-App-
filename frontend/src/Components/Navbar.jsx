@@ -3,12 +3,12 @@ import Logo from '../assets/Frontier Physicians (2).png';
 
 const Navbar = () => {
   return (
-    <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
+    <nav className="w-full bg-white h-15 shadow-md fixed top-0 left-0 z-50 md:h-auto ">
       <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
 
         {/* Logo */}
         <div className="flex items-center">
-          <img className="w-32 h-auto rounded-xl" src={Logo} alt="Logo" />
+          <img className="w-15 h-15 md:h-auto md:w-32 rounded-xl" src={Logo} alt="Logo" />
         </div>
 
         {/* Menu Items */}
