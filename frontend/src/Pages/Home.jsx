@@ -6,6 +6,7 @@ import Features from '../Components/Features'
 import Collab from '../Components/Collab'
 import Footer from '../Components/Footer'
 
+
 const Home = () => {
   return (
     <div>
