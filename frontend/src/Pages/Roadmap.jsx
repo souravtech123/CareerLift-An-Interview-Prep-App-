@@ -89,15 +89,15 @@ const Roadmap = () => {
   return (
     <>
     <Navbar/>
-    <div className="min-h-screen bg-gray-100 p- mt-45">
-      <h1 className="text-4xl font-bold text-center text-green-600 mb-8">
+    <div className="min-h-screen bg-gray-100 p- mt-43">
+      <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">
         Career Roadmaps
       </h1>
 
       {/* Career Selection Dropdown */}
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center mb-8">
         <select
-          className="p-3 border rounded-lg shadow focus:ring-2 focus:ring-green-400"
+          className="p-3 border text-xl text-white bg-gray-700 font-serif rounded-sm shadow focus:ring-2 focus:ring-blue-400"
           value={selectedCareer}
           onChange={(e) => setSelectedCareer(e.target.value)}
         >
@@ -114,9 +114,9 @@ const Roadmap = () => {
         {careerRoadmaps[selectedCareer].map((step, index) => (
           <div
             key={index}
-            className="p-4 bg-white rounded-xl shadow border-l-4 border-green-500 hover:shadow-lg transition"
+            className="p-4 bg-white rounded-xl shadow border-l-4 border-blue-500 hover:shadow-lg hover:bg-blue-900 transition"
           >
-            <h2 className="font-semibold text-gray-700">
+            <h2 className="font-semibold text-gray-700 hover:text-white">
               Step {index + 1}: {step}
             </h2>
           </div>
