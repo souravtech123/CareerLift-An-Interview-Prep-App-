@@ -62,11 +62,21 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <ul className="md:hidden bg-white shadow-md flex flex-col gap-4 px-6 py-4 text-blue-950 font-medium">
-            <li className="hover:text-blue-600 cursor-pointer">Explore</li>
-            <li className="hover:text-blue-600 cursor-pointer">Library</li>
-            <li className="hover:text-blue-600 cursor-pointer">Practice</li>
-            <li className="hover:text-blue-600 cursor-pointer">About Us</li>
-            <li className="hover:text-blue-600 cursor-pointer">Contact</li>
+           <NavLink className="hover:text-blue-600 cursor-pointer" to="/Roadmap" end>
+           Explore
+          </NavLink>
+          <NavLink className="hover:text-blue-600 cursor-pointer" to="/explore" end>
+           Library
+          </NavLink>
+          <NavLink className="hover:text-blue-600 cursor-pointer" to="/practice" end>
+           Practice
+          </NavLink>
+          <NavLink className="hover:text-blue-600 cursor-pointer" to="/About" end>
+           QuickTip
+          </NavLink>
+          <NavLink className="hover:text-blue-600 cursor-pointer" to="/Contact" end>
+           Cheats
+          </NavLink>
           </ul>
         )}
       </nav>
