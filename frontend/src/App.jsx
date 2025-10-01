@@ -6,6 +6,7 @@ import Roadmap from './Pages/Roadmap'
 import About from './Pages/About'
 import Contact from './Pages/Contact'
 import Practice from './Pages/Practice'
+import Start from './Pages/Start'
 
 const App = () => {
   return (
@@ -19,10 +20,12 @@ const App = () => {
     <Route path="/About" element={<About />} />
     <Route path="/Contact" element={<Contact />} />
     <Route path="/Practice" element={<Practice />} />
+    <Route path="/Start" element={<Start />} />
+     
     
 
     </Routes>
-     HELLO
+     
 
     </>
    

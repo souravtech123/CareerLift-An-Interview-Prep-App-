@@ -1,72 +1,79 @@
-import React from 'react';
-import Navbar from '../Components/Navbar';
+import React, { useState } from "react";
+import Navbar from "../Components/Navbar";
 
-const Contact = () => {
+const cheatSheetData = {
+  "HTML": [
+    { title: "Basic Structure", content: "<!DOCTYPE html>\n<html>\n<head>\n  <title>Page Title</title>\n</head>\n<body>\n  <!-- content -->\n</body>\n</html>" },
+    { title: "Links", content: '<a href="https://example.com">Link Text</a>' },
+    { title: "Images", content: '<img src="image.jpg" alt="description">' },
+  ],
+  "CSS": [
+    { title: "Selectors", content: "div { color: red; }" },
+    { title: "Flexbox", content: "display: flex;\njustify-content: center;\nalign-items: center;" },
+    { title: "Grid", content: "display: grid;\ngrid-template-columns: repeat(3, 1fr);" },
+  ],
+  "JavaScript": [
+    { title: "Variables", content: "let name = 'John';\nconst age = 25;" },
+    { title: "Functions", content: "function greet() { console.log('Hello'); }" },
+    { title: "Arrow Function", content: "const greet = () => console.log('Hello');" },
+  ],
+  "React": [
+    { title: "Component", content: "function MyComponent() { return <h1>Hello</h1>; }" },
+    { title: "useState Hook", content: "const [state, setState] = useState(initialValue);" },
+    { title: "useEffect Hook", content: "useEffect(() => { /* effect */ }, [dependencies]);" },
+  ],
+  "Tailwind CSS": [
+    { title: "Text Color", content: "className='text-red-500'" },
+    { title: "Background Color", content: "className='bg-blue-200'" },
+    { title: "Flex Layout", content: "className='flex justify-center items-center'" },
+  ],
+};
+
+const FrontendNotes = () => {
+  const [activeTopic, setActiveTopic] = useState("HTML");
+
   return (
     <>
-    <Navbar/>
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-start p-8 mt-45">
-      
-      {/* Header */}
-      <div className="text-center max-w-3xl mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
-          Get in Touch
+      <Navbar />
+      <div className="min-h-screen p-6 bg-gradient-to-r from-blue-50 to-purple-50 mt-45">
+        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+          Frontend Notes & Cheatsheet
         </h1>
-        <p className="text-lg md:text-xl text-gray-700">
-          Have questions or suggestions? We'd love to hear from you! Fill out the form below or reach us through email or social media.
-        </p>
+
+        {/* Topic Buttons */}
+        <div className="flex flex-wrap justify-center gap-4 mb-6">
+          {Object.keys(cheatSheetData).map((topic) => (
+            <button
+              key={topic}
+              className={`px-6 py-2 rounded-full font-semibold shadow-lg transition transform hover:scale-105 ${
+                activeTopic === topic
+                  ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+                  : "bg-white text-gray-800"
+              }`}
+              onClick={() => setActiveTopic(topic)}
+            >
+              {topic}
+            </button>
+          ))}
+        </div>
+
+        {/* Notes Section */}
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          {cheatSheetData[activeTopic].map((note, i) => (
+            <div
+              key={i}
+              className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition"
+            >
+              <h3 className="text-xl font-bold mb-2 text-purple-600">{note.title}</h3>
+              <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+                {note.content}
+              </pre>
+            </div>
+          ))}
+        </div>
       </div>
-
-      {/* Contact Form */}
-      <div className="w-full max-w-2xl bg-white p-8 rounded-xl shadow-lg">
-        <form className="flex flex-col gap-4">
-          <div className="flex flex-col">
-            <label className="mb-2 font-medium text-gray-700">Name</label>
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label className="mb-2 font-medium text-gray-700">Email</label>
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label className="mb-2 font-medium text-gray-700">Message</label>
-            <textarea
-              placeholder="Your Message"
-              className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              rows="5"
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            className="mt-4 px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
-          >
-            Send Message
-          </button>
-        </form>
-      </div>
-
-      {/* Optional Contact Info */}
-      <div className="mt-12 text-center max-w-2xl">
-        <h2 className="text-2xl font-bold text-blue-900 mb-4">Other Ways to Reach Us</h2>
-        <p className="text-gray-700 mb-2">Email: contact@yourplatform.com</p>
-        <p className="text-gray-700 mb-2">Phone: +91 9876543210</p>
-        <p className="text-gray-700">Follow us on social media for updates and news!</p>
-      </div>
-
-    </div>
     </>
   );
 };
 
-export default Contact;
+export default FrontendNotes;

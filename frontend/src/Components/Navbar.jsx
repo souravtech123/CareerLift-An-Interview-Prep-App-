@@ -31,10 +31,10 @@ const Navbar = () => {
            Practice
           </NavLink>
           <NavLink className="hover:text-blue-600 cursor-pointer" to="/About" end>
-           About Us
+           QuickTip
           </NavLink>
           <NavLink className="hover:text-blue-600 cursor-pointer" to="/Contact" end>
-           Contact
+           Cheats
           </NavLink>
           </ul>
 

@@ -5,6 +5,7 @@ import img2 from '../assets/icons8-google-logo-48.png'
 import img3 from '../assets/icons8-meta-48.png'
 import img4 from '../assets/icons8-netflix-logo-94.png'
 import img5 from '../assets/Microsoft_Logo_512px.png'
+import { NavLink } from 'react-router';
 
 const Exist = () => {
   return (
@@ -38,7 +39,9 @@ const Exist = () => {
         transition={{ type: "spring", stiffness: 300 }}
         className="mt-8 px-8 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
       >
-        Get Started
+        <NavLink to="/Start" end>
+           Get Started
+        </NavLink>
       </motion.button>
 
       <motion.div
