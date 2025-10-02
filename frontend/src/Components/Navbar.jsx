@@ -61,24 +61,30 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <ul className="md:hidden bg-white shadow-md flex flex-col gap-4 px-6 py-4 text-blue-950 font-medium">
-           <NavLink className="hover:text-blue-600 cursor-pointer" to="/Roadmap" end>
-           Explore
-          </NavLink>
-          <NavLink className="hover:text-blue-600 cursor-pointer" to="/explore" end>
-           Library
-          </NavLink>
-          <NavLink className="hover:text-blue-600 cursor-pointer" to="/practice" end>
-           Practice
-          </NavLink>
-          <NavLink className="hover:text-blue-600 cursor-pointer" to="/About" end>
-           QuickTip
-          </NavLink>
-          <NavLink className="hover:text-blue-600 cursor-pointer" to="/Contact" end>
-           Cheats
-          </NavLink>
-          </ul>
-        )}
+  <ul className="md:hidden bg-white/90 backdrop-blur-md shadow-lg rounded-xl flex flex-col gap-4 px-6 py-4 text-blue-950 font-medium animate-slide-down">
+    {[
+      { name: "Explore", path: "/Roadmap" },
+      { name: "Library", path: "/explore" },
+      { name: "Practice", path: "/practice" },
+      { name: "QuickTip", path: "/About" },
+      { name: "Cheats", path: "/Contact" },
+    ].map((link, idx) => (
+      <NavLink
+        key={idx}
+        to={link.path}
+        end
+        className={({ isActive }) =>
+          `relative px-4 py-2 rounded-lg transition-all duration-300
+           ${isActive ? "bg-blue-100 text-blue-800 font-semibold shadow-md" : "hover:bg-blue-50 hover:text-blue-700"}`
+        }
+      >
+        <span className="absolute left-0 top-0 h-full w-1 bg-blue-600 rounded-l-lg scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
+        {link.name}
+      </NavLink>
+    ))}
+  </ul>
+)}
+
       </nav>
     </>
   );
