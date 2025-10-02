@@ -9,13 +9,53 @@ const questionBank = {
     { question: "What are React hooks?", answer: "Hooks are functions that let you use state and lifecycle features in functional components." },
     { question: "What is the purpose of JSX in React?", answer: "JSX allows writing HTML-like syntax in JavaScript, which React transforms into DOM elements." },
     { question: "How does state management work in React?", answer: "State is stored in components and can be updated using setState or useState, causing re-rendering." },
+    { question: "What is the difference between props and state?", answer: "Props are read-only data passed from parent to child, while state is mutable data managed within the component." },
+    { question: "What is the use of useEffect in React?", answer: "useEffect is used to perform side effects like data fetching or updating the DOM after rendering." },
+    { question: "What is the difference between functional and class components?", answer: "Functional components are simpler and use hooks, while class components use lifecycle methods and state." },
+    { question: "What is a key prop in React?", answer: "Key prop helps React identify which items have changed, are added, or removed for efficient rendering." },
+    { question: "How do you handle events in React?", answer: "Events are handled using camelCase syntax and passing a function reference, e.g., onClick={handleClick}." }
   ],
+
   "Backend Developer": [
     { question: "Explain the difference between SQL and NoSQL.", answer: "SQL databases are relational, NoSQL databases are non-relational and more flexible." },
     { question: "What is REST API?", answer: "REST API is an interface for communication between client and server using HTTP methods." },
     { question: "How does authentication work in Node.js?", answer: "Authentication verifies user identity, often using tokens, sessions, or OAuth." },
+    { question: "What is middleware in Express.js?", answer: "Middleware functions process requests before reaching the route handler and can modify request/response." },
+    { question: "What is the difference between PUT and PATCH?", answer: "PUT replaces the entire resource, PATCH updates only specified fields." },
+    { question: "How do you connect Node.js to a database?", answer: "By using drivers or ORMs like mongoose for MongoDB or Sequelize for SQL databases." },
+    { question: "What is the purpose of environment variables in backend?", answer: "Environment variables store configuration like API keys or database URLs securely." },
+    { question: "How does error handling work in Express?", answer: "Errors are handled using next(err) and error-handling middleware to send responses gracefully." },
+    { question: "What is JWT and how is it used?", answer: "JWT is a JSON Web Token used to securely transmit information between client and server, often for authentication." },
+    { question: "What is CORS and why is it important?", answer: "CORS (Cross-Origin Resource Sharing) allows servers to control which origins can access resources." }
   ],
+
+  "Data Scientist": [
+    { question: "What is the difference between supervised and unsupervised learning?", answer: "Supervised learning uses labeled data, unsupervised learning finds patterns in unlabeled data." },
+    { question: "Which Python library is used for data manipulation?", answer: "Pandas is used for manipulating and analyzing data in Python." },
+    { question: "What is the purpose of NumPy in data science?", answer: "NumPy provides efficient array operations and mathematical functions for numerical computations." },
+    { question: "What is the difference between Series and DataFrame in Pandas?", answer: "Series is a 1-dimensional labeled array, DataFrame is a 2-dimensional table with rows and columns." },
+    { question: "How do you handle missing data in Pandas?", answer: "By using methods like fillna() to replace or dropna() to remove missing values." },
+    { question: "What is data normalization?", answer: "Normalization scales features to a standard range, often 0-1, to improve model performance." },
+    { question: "What is the difference between classification and regression?", answer: "Classification predicts categorical labels, regression predicts continuous numerical values." },
+    { question: "What is feature engineering?", answer: "Feature engineering is the process of creating new features from raw data to improve model performance." },
+    { question: "What is a confusion matrix?", answer: "A confusion matrix summarizes classification results showing true positives, false positives, etc." },
+    { question: "What is cross-validation?", answer: "Cross-validation splits data into folds to train and test models multiple times for robust evaluation." }
+  ],
+
+  "AI/ML Engineer": [
+    { question: "What does AI stand for?", answer: "AI stands for Artificial Intelligence." },
+    { question: "What is supervised learning?", answer: "Supervised learning trains models on labeled data to predict outcomes." },
+    { question: "What is unsupervised learning?", answer: "Unsupervised learning finds patterns in unlabeled data, like clustering or dimensionality reduction." },
+    { question: "What is reinforcement learning?", answer: "Reinforcement learning trains agents to make decisions based on rewards and penalties." },
+    { question: "What is a neural network?", answer: "A neural network is a model inspired by the brain, consisting of layers of interconnected nodes." },
+    { question: "What is overfitting in machine learning?", answer: "Overfitting occurs when a model learns training data too well and performs poorly on new data." },
+    { question: "What is gradient descent?", answer: "Gradient descent is an optimization algorithm used to minimize the loss function in training models." },
+    { question: "What is the difference between classification and regression?", answer: "Classification predicts categories, regression predicts continuous values." },
+    { question: "What is a loss function?", answer: "A loss function measures how well a model's predictions match the actual outcomes." },
+    { question: "What is the difference between RNN and CNN?", answer: "RNNs are used for sequential data, CNNs are used for spatial data like images." }
+  ]
 };
+
 
 const Explore = () => {
   const roles = Object.keys(questionBank);

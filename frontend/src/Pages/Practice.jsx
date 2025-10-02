@@ -7,24 +7,76 @@ const questionBank = {
   "Frontend Developer": [
     { question: "What does HTML stand for?", options: ["Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language"], answer: 0 },
     { question: "Which CSS property changes text color?", options: ["color", "font-size", "background-color"], answer: 0 },
-    { question: "Which hook is used for state in React?", options: ["useEffect", "useState", "useRef"], answer: 1 }
+    { question: "Which hook is used for state in React?", options: ["useEffect", "useState", "useRef"], answer: 1 },
+    { question: "Which attribute is used to link a CSS file in HTML?", options: ["src", "href", "link"], answer: 1 },
+    { question: "What is the default display of a div element?", options: ["inline", "block", "flex"], answer: 1 },
+    { question: "Which HTML tag is used to create a hyperlink?", options: ["<a>", "<link>", "<href>"], answer: 0 },
+    { question: "Which CSS property controls spacing between lines?", options: ["line-height", "letter-spacing", "word-spacing"], answer: 0 },
+    { question: "Which method is used to render a component in React?", options: ["ReactDOM.render()", "React.render()", "ReactDOM.create()"], answer: 0 },
+    { question: "What is the purpose of JSX in React?", options: ["To write HTML inside JavaScript", "To create variables", "To style components"], answer: 0 },
+    { question: "Which CSS property is used for rounded corners?", options: ["border-radius", "border-style", "border-width"], answer: 0 },
+    { question: "Which event is triggered when a user clicks an element in React?", options: ["onClick", "onChange", "onSubmit"], answer: 0 },
+    { question: "Which tag is used to insert a line break in HTML?", options: ["<break>", "<br>", "<lb>"], answer: 1 },
+    { question: "Which CSS unit is relative to the font size of the element?", options: ["px", "em", "%"], answer: 1 },
+    { question: "Which method prevents the default behavior of an event in React?", options: ["stopPropagation()", "preventDefault()", "blockEvent()"], answer: 1 },
+    { question: "What is the correct way to write comments in JSX?", options: ["{/* comment */}", "<!-- comment -->", "// comment"], answer: 0 }
   ],
+
   "Backend Developer": [
     { question: "Which framework is commonly used with Node.js?", options: ["Express.js", "React.js", "Django"], answer: 0 },
     { question: "Which HTTP method is used to fetch data?", options: ["GET", "POST", "PUT"], answer: 0 },
-    { question: "Which database is NoSQL?", options: ["MySQL", "MongoDB", "PostgreSQL"], answer: 1 }
+    { question: "Which database is NoSQL?", options: ["MySQL", "MongoDB", "PostgreSQL"], answer: 1 },
+    { question: "Which module is used to handle file paths in Node.js?", options: ["path", "fs", "http"], answer: 0 },
+    { question: "Which method is used to send JSON response in Express.js?", options: ["res.send()", "res.json()", "res.data()"], answer: 1 },
+    { question: "Which middleware parses incoming JSON requests in Express.js?", options: ["body-parser", "cookie-parser", "express-session"], answer: 0 },
+    { question: "Which method is used to create a server in Node.js?", options: ["http.createServer()", "server.create()", "express.createServer()"], answer: 0 },
+    { question: "Which database uses collections and documents?", options: ["MongoDB", "MySQL", "SQLite"], answer: 0 },
+    { question: "Which HTTP status code means 'Not Found'?", options: ["404", "200", "500"], answer: 0 },
+    { question: "Which command initializes a new Node.js project?", options: ["npm init", "npm start", "node init"], answer: 0 },
+    { question: "Which method handles GET requests in Express.js?", options: ["app.get()", "app.post()", "app.put()"], answer: 0 },
+    { question: "Which object contains query parameters in Express.js?", options: ["req.query", "req.body", "req.params"], answer: 0 },
+    { question: "Which Node.js module allows working with the file system?", options: ["fs", "path", "http"], answer: 0 },
+    { question: "Which database is relational?", options: ["MySQL", "MongoDB", "Firebase"], answer: 0 },
+    { question: "Which method is used to redirect a response in Express?", options: ["res.redirect()", "res.send()", "res.json()"], answer: 0 }
   ],
+
   "Data Scientist": [
     { question: "Which library is used for data manipulation in Python?", options: ["Pandas", "NumPy", "Matplotlib"], answer: 0 },
     { question: "Which library is commonly used for data visualization?", options: ["Matplotlib", "Scikit-learn", "TensorFlow"], answer: 0 },
-    { question: "Which method fills missing values in Pandas?", options: ["fillna()", "dropna()", "replace()"], answer: 0 }
+    { question: "Which method fills missing values in Pandas?", options: ["fillna()", "dropna()", "replace()"], answer: 0 },
+    { question: "Which function returns the shape of a DataFrame?", options: ["shape()", "df.shape", "len(df)"], answer: 1 },
+    { question: "Which library is used for numerical computations in Python?", options: ["NumPy", "Pandas", "Seaborn"], answer: 0 },
+    { question: "Which function plots a histogram in Matplotlib?", options: ["plt.hist()", "plt.plot()", "plt.bar()"], answer: 0 },
+    { question: "Which method removes duplicates in a DataFrame?", options: ["drop_duplicates()", "remove_duplicates()", "unique()"], answer: 0 },
+    { question: "Which method selects a column in Pandas?", options: ["df['column']", "df.column()", "df.column"], answer: 0 },
+    { question: "Which function normalizes data in scikit-learn?", options: ["MinMaxScaler", "StandardScaler", "Normalizer"], answer: 0 },
+    { question: "Which method merges two DataFrames?", options: ["merge()", "join()", "concat()"], answer: 0 },
+    { question: "Which library is used for machine learning in Python?", options: ["Scikit-learn", "NumPy", "Pandas"], answer: 0 },
+    { question: "Which method is used to split dataset in scikit-learn?", options: ["train_test_split()", "split()", "divide()"], answer: 0 },
+    { question: "Which function plots a line chart in Matplotlib?", options: ["plt.plot()", "plt.line()", "plt.show()"], answer: 0 },
+    { question: "Which function returns the mean of a Pandas Series?", options: ["mean()", "average()", "median()"], answer: 0 },
+    { question: "Which method converts categorical variables to dummy/indicator variables?", options: ["get_dummies()", "to_numeric()", "factorize()"], answer: 0 }
   ],
+
   "AI/ML Engineer": [
     { question: "What does AI stand for?", options: ["Artificial Intelligence", "Automated Input", "Advanced Integration"], answer: 0 },
     { question: "Which type of AI is designed to perform specific tasks?", options: ["Narrow AI", "General AI", "Super AI"], answer: 0 },
-    { question: "Which algorithm is used for supervised learning?", options: ["Linear Regression", "K-Means", "Principal Component Analysis"], answer: 0 }
+    { question: "Which algorithm is used for supervised learning?", options: ["Linear Regression", "K-Means", "Principal Component Analysis"], answer: 0 },
+    { question: "Which algorithm is used for classification?", options: ["Decision Tree", "K-Means", "PCA"], answer: 0 },
+    { question: "Which library is used for machine learning in Python?", options: ["Scikit-learn", "Matplotlib", "NumPy"], answer: 0 },
+    { question: "Which neural network type is used for sequence data?", options: ["RNN", "CNN", "GAN"], answer: 0 },
+    { question: "Which activation function outputs values between 0 and 1?", options: ["Sigmoid", "ReLU", "Tanh"], answer: 0 },
+    { question: "Which method reduces overfitting in ML models?", options: ["Regularization", "Normalization", "Standardization"], answer: 0 },
+    { question: "Which algorithm is unsupervised learning?", options: ["K-Means", "Linear Regression", "Logistic Regression"], answer: 0 },
+    { question: "Which loss function is used for regression?", options: ["Mean Squared Error", "Cross Entropy", "Hinge Loss"], answer: 0 },
+    { question: "Which optimizer is commonly used in neural networks?", options: ["Adam", "SGD", "RMSProp"], answer: 0 },
+    { question: "Which method scales features to a range?", options: ["MinMaxScaler", "StandardScaler", "Normalizer"], answer: 0 },
+    { question: "Which algorithm reduces dimensionality?", options: ["PCA", "KNN", "Naive Bayes"], answer: 0 },
+    { question: "Which deep learning library is by Google?", options: ["TensorFlow", "PyTorch", "Keras"], answer: 0 },
+    { question: "Which technique generates new data samples?", options: ["GANs", "RNNs", "CNNs"], answer: 0 }
   ]
 };
+
 
 
 const domainColors = {
