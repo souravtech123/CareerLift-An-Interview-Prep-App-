@@ -15,7 +15,6 @@ const questionBank = {
     { question: "What is a key prop in React?", answer: "Key prop helps React identify which items have changed, are added, or removed for efficient rendering." },
     { question: "How do you handle events in React?", answer: "Events are handled using camelCase syntax and passing a function reference, e.g., onClick={handleClick}." }
   ],
-
   "Backend Developer": [
     { question: "Explain the difference between SQL and NoSQL.", answer: "SQL databases are relational, NoSQL databases are non-relational and more flexible." },
     { question: "What is REST API?", answer: "REST API is an interface for communication between client and server using HTTP methods." },
@@ -28,7 +27,6 @@ const questionBank = {
     { question: "What is JWT and how is it used?", answer: "JWT is a JSON Web Token used to securely transmit information between client and server, often for authentication." },
     { question: "What is CORS and why is it important?", answer: "CORS (Cross-Origin Resource Sharing) allows servers to control which origins can access resources." }
   ],
-
   "Data Scientist": [
     { question: "What is the difference between supervised and unsupervised learning?", answer: "Supervised learning uses labeled data, unsupervised learning finds patterns in unlabeled data." },
     { question: "Which Python library is used for data manipulation?", answer: "Pandas is used for manipulating and analyzing data in Python." },
@@ -41,7 +39,6 @@ const questionBank = {
     { question: "What is a confusion matrix?", answer: "A confusion matrix summarizes classification results showing true positives, false positives, etc." },
     { question: "What is cross-validation?", answer: "Cross-validation splits data into folds to train and test models multiple times for robust evaluation." }
   ],
-
   "AI/ML Engineer": [
     { question: "What does AI stand for?", answer: "AI stands for Artificial Intelligence." },
     { question: "What is supervised learning?", answer: "Supervised learning trains models on labeled data to predict outcomes." },
@@ -56,20 +53,19 @@ const questionBank = {
   ]
 };
 
-
 const Explore = () => {
   const roles = Object.keys(questionBank);
   const [role, setRole] = useState(roles[0]);
   const [search, setSearch] = useState("");
   const [openIndex, setOpenIndex] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false); // new state for mobile sidebar
 
   const questions = questionBank[role] || [];
   const filteredQuestions = questions.filter((q) =>
     q.question.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Text highlight function
   const highlightText = (text, term) => {
     if (!term) return text;
     const parts = text.split(new RegExp(`(${term})`, "gi"));
@@ -85,18 +81,34 @@ const Explore = () => {
   return (
     <>
       <Navbar />
-      <div className={`${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-800'} min-h-screen flex mt-40`}>
-        
-        {/* Dark/Light Toggle */}
-        <button
-          className="fixed top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50"
-          onClick={() => setDarkMode(!darkMode)}
-        >
-          {darkMode ? "Light Mode" : "Dark Mode"}
-        </button>
 
+      {/* Dark/Light Toggle */}
+      <button
+        className="fixed top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50"
+        onClick={() => setDarkMode(!darkMode)}
+      >
+        {darkMode ? "Light Mode" : "Dark Mode"}
+      </button>
+
+      {/* Mobile Sidebar Toggle Button */}
+      <button
+        className="md:hidden fixed top-6 left-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        {sidebarOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      <div className={`${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-800'} min-h-screen mt-40 flex flex-col md:flex-row`}>
+        
         {/* Sidebar */}
-        <aside className={`${darkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-800'} w-64 shadow-lg p-6 sticky top-24 h-fit`}>
+        <aside
+          className={`
+            ${darkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-800'}
+            w-64 md:w-64 shadow-lg p-6 sticky top-24 h-fit overflow-y-auto max-h-screen
+            fixed md:static z-40 top-0 left-0 h-full transform transition-transform duration-300
+            ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0
+          `}
+        >
           <h2 className="text-xl font-bold mb-4 text-blue-600">Categories</h2>
           <ul className="space-y-3">
             {roles.map((roleName) => (
@@ -109,7 +121,10 @@ const Explore = () => {
                       ? "hover:bg-gray-700"
                       : "hover:bg-blue-100"
                 }`}
-                onClick={() => setRole(roleName)}
+                onClick={() => {
+                  setRole(roleName);
+                  setSidebarOpen(false); // close sidebar on mobile after selecting
+                }}
               >
                 {roleName}
               </li>
@@ -117,9 +132,15 @@ const Explore = () => {
           </ul>
         </aside>
 
+        {/* Overlay on mobile when sidebar is open */}
+        {sidebarOpen && <div
+          className="fixed inset-0 bg-black opacity-50 z-30 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        ></div>}
+
         {/* Main Content */}
-        <main className="flex-1 p-8">
-          <h1 className="text-3xl font-bold mb-6">{role} Questions & Answers</h1>
+        <main className="flex-1 p-4 md:p-8">
+          <h1 className="text-2xl md:text-3xl font-bold mb-6">{role} Questions & Answers</h1>
 
           {/* Search */}
           <input
@@ -127,7 +148,7 @@ const Explore = () => {
             placeholder="Search questions..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className={`${darkMode ? 'bg-gray-700 text-gray-100 placeholder-gray-300' : 'bg-white text-gray-800 placeholder-gray-500'} w-full p-3 border rounded-xl mb-6 focus:ring-2 focus:ring-blue-400`}
+            className={`${darkMode ? 'bg-gray-700 text-gray-100 placeholder-gray-300' : 'bg-white text-gray-800 placeholder-gray-500'} w-full p-2 md:p-3 border rounded-xl mb-6 focus:ring-2 focus:ring-blue-400`}
           />
 
           {/* Questions List */}
