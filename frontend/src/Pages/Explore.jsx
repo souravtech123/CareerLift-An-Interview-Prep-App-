@@ -82,7 +82,7 @@ const Explore = () => {
 
       {/* Dark/Light Toggle */}
       <button
-        className=" fixed top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50 mt-40"
+        className=" fixed top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50 mt-10"
         onClick={() => setDarkMode(!darkMode)}
       >
         {darkMode ? "Light Mode" : "Dark Mode"}
