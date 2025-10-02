@@ -82,7 +82,7 @@ const Explore = () => {
 
       {/* Dark/Light Toggle */}
       <button
-        className=" fixed top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50 mt-10"
+        className=" fixed top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50 mt-20"
         onClick={() => setDarkMode(!darkMode)}
       >
         {darkMode ? "Light Mode" : "Dark Mode"}
@@ -90,7 +90,7 @@ const Explore = () => {
 
       {/* Mobile Sidebar Toggle */}
       <button
-        className="md:hidden fixed top-6 left-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50"
+        className="md:hidden fixed top-6 left-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50 mt-20"
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
         {sidebarOpen ? <FaTimes /> : <FaBars />}
