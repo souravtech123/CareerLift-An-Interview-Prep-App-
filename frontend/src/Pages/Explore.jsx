@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../Components/Navbar";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
 
 const questionBank = {
   "Frontend Developer": [
@@ -59,7 +59,7 @@ const Explore = () => {
   const [search, setSearch] = useState("");
   const [openIndex, setOpenIndex] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false); // new state for mobile sidebar
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const questions = questionBank[role] || [];
   const filteredQuestions = questions.filter((q) =>
@@ -72,9 +72,7 @@ const Explore = () => {
     return parts.map((part, i) =>
       part.toLowerCase() === term.toLowerCase() ? (
         <span key={i} className="bg-yellow-200 dark:bg-yellow-600">{part}</span>
-      ) : (
-        part
-      )
+      ) : part
     );
   };
 
@@ -84,13 +82,13 @@ const Explore = () => {
 
       {/* Dark/Light Toggle */}
       <button
-        className="fixed top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50"
+        className=" fixed top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50 mt-40"
         onClick={() => setDarkMode(!darkMode)}
       >
         {darkMode ? "Light Mode" : "Dark Mode"}
       </button>
 
-      {/* Mobile Sidebar Toggle Button */}
+      {/* Mobile Sidebar Toggle */}
       <button
         className="md:hidden fixed top-6 left-6 bg-blue-500 text-white px-4 py-2 rounded-lg z-50"
         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -99,32 +97,17 @@ const Explore = () => {
       </button>
 
       <div className={`${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-800'} min-h-screen mt-40 flex flex-col md:flex-row`}>
-        
         {/* Sidebar */}
         <aside
-          className={`
-            ${darkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-800'}
-            w-64 md:w-64 shadow-lg p-6 sticky top-24 h-fit overflow-y-auto max-h-screen
-            fixed md:static z-40 top-0 left-0 h-full transform transition-transform duration-300
-            ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0
-          `}
+          className={`${darkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-800'} w-64 md:w-64 shadow-lg p-6 sticky top-24 h-fit overflow-y-auto max-h-screen md:static z-40 transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
         >
           <h2 className="text-xl font-bold mb-4 text-blue-600">Categories</h2>
           <ul className="space-y-3">
             {roles.map((roleName) => (
               <li
                 key={roleName}
-                className={`cursor-pointer p-2 rounded-lg font-medium transition-colors ${
-                  role === roleName
-                    ? "bg-blue-500 text-white"
-                    : darkMode
-                      ? "hover:bg-gray-700"
-                      : "hover:bg-blue-100"
-                }`}
-                onClick={() => {
-                  setRole(roleName);
-                  setSidebarOpen(false); // close sidebar on mobile after selecting
-                }}
+                className={`cursor-pointer p-2 rounded-lg font-medium transition-colors ${role === roleName ? "bg-blue-500 text-white" : darkMode ? "hover:bg-gray-700" : "hover:bg-blue-100"}`}
+                onClick={() => { setRole(roleName); setSidebarOpen(false); }}
               >
                 {roleName}
               </li>
@@ -132,11 +115,8 @@ const Explore = () => {
           </ul>
         </aside>
 
-        {/* Overlay on mobile when sidebar is open */}
-        {sidebarOpen && <div
-          className="fixed inset-0 bg-black opacity-50 z-30 md:hidden"
-          onClick={() => setSidebarOpen(false)}
-        ></div>}
+        {/* Mobile overlay */}
+        {sidebarOpen && <div className="fixed inset-0 bg-black opacity-50 z-30 md:hidden mt-45" onClick={() => setSidebarOpen(false)}  />}
 
         {/* Main Content */}
         <main className="flex-1 p-4 md:p-8">
@@ -160,30 +140,16 @@ const Explore = () => {
                   className={`${darkMode ? 'bg-gray-800 border-gray-600 hover:shadow-xl' : 'bg-white border-blue-500 hover:shadow-lg'} shadow-md p-5 rounded-xl border-l-4 transition cursor-pointer`}
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 >
-                  <span className="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full mb-2">
-                    {role}
-                  </span>
+                  <span className="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full mb-2">{role}</span>
                   <div className="flex justify-between items-center">
-                    <h3 className="font-semibold text-lg">
-                      {index + 1}. {highlightText(q.question, search)}
-                    </h3>
-                    <span
-                      className={`text-blue-500 transition-transform duration-300 ${openIndex === index ? 'rotate-180' : 'rotate-0'}`}
-                    >
-                      <FaChevronDown />
-                    </span>
+                    <h3 className="font-semibold text-lg">{index + 1}. {highlightText(q.question, search)}</h3>
+                    <span className={`text-blue-500 transition-transform duration-300 ${openIndex === index ? 'rotate-180' : 'rotate-0'}`}><FaChevronDown /></span>
                   </div>
-
                   {/* Answer */}
                   <div className={`overflow-hidden transition-all duration-500 ${openIndex === index ? 'max-h-96 mt-4' : 'max-h-0'}`}>
                     <div className={`${darkMode ? 'bg-gray-700 border-gray-600 text-gray-100' : 'bg-blue-50 border-blue-500 text-gray-600'} p-4 rounded-lg border-l-2 flex justify-between items-start`}>
                       <p className="flex-1">{highlightText(q.answer, search)}</p>
-                      <button
-                        className="ml-3 text-sm bg-blue-500 text-white px-3 py-1 rounded-lg"
-                        onClick={() => navigator.clipboard.writeText(q.answer)}
-                      >
-                        Copy
-                      </button>
+                      <button className="ml-3 text-sm bg-blue-500 text-white px-3 py-1 rounded-lg" onClick={() => navigator.clipboard.writeText(q.answer)}>Copy</button>
                     </div>
                   </div>
                 </div>
