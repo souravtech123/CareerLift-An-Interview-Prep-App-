@@ -1,4 +1,4 @@
-
+import { Analytics } from '@vercel/analytics/react';
 import Home from './Pages/Home'
 import { Routes, Route } from 'react-router'
 import Explore from './Pages/Explore'
@@ -21,6 +21,7 @@ const App = () => {
     <Route path="/Contact" element={<Contact />} />
     <Route path="/Practice" element={<Practice />} />
     <Route path="/Start" element={<Start />} />
+    <Analytics />
      
     
 
